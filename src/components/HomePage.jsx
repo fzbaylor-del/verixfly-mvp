@@ -1,6 +1,8 @@
 import Header from './Header'
 import Hero from './Hero'
 import SearchWidget from './SearchWidget'
+import TrustBadge from './TrustBadge'
+import FeatureRow from './FeatureRow'
 
 export default function HomePage() {
   return (
@@ -8,6 +10,8 @@ export default function HomePage() {
       <Header />
       <Hero />
       <SearchWidget />
+      <TrustBadge />
+      <FeatureRow />
     </div>
   )
 }
