@@ -3,6 +3,7 @@ import Hero from './Hero'
 import SearchWidget from './SearchWidget'
 import TrustBadge from './TrustBadge'
 import FeatureRow from './FeatureRow'
+import FlightResults from './FlightResults'
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <SearchWidget />
       <TrustBadge />
       <FeatureRow />
+      <FlightResults />
     </div>
   )
 }
