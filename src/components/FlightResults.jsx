@@ -2,7 +2,7 @@ export default function FlightResults({ searchData }) {
   // Build dynamic route string, fall back to defaults if not provided
   const from = searchData?.from || 'Lagos'
   const to = searchData?.to || 'Abuja'
-  const route = `${from} (LOS) → ${to} (ABV)`
+  const route = `${from} (LOS) → ${to} (ABJ)`
 
   // Generate dummy flights that feel personalized for the route
   const flights = [
