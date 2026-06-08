@@ -33,7 +33,7 @@ export default function SearchWidget({ onSearch }) {
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">📍</span>
             <input
               type="text"
-              placeholder="Abuja (ABV)"
+              placeholder="Abuja (ABJ)"
               value={to}
               onChange={(e) => setTo(e.target.value)}
               className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent"
