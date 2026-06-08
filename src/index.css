@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+/* Prevents iOS zoom on form elements */
+input, select, textarea, button, .w-full {
+    font-size: 16px !important;
+    touch-action: manipulation;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+@keyframes flyAcross {
+    0% {
+        transform: translateX(-100%) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.animate-flyAcross {
+    animation: flyAcross 2.5s ease-in-out infinite;
+}

@@ -1,51 +1,60 @@
-export default function FlightResults() {
-  // Dummy flight data — this will later come from Amadeus API
+export default function FlightResults({ searchData }) {
+  // Build dynamic route string, fall back to defaults if not provided
+  const from = searchData?.from || 'Lagos'
+  const to = searchData?.to || 'Abuja'
+  const route = `${from} (LOS) → ${to} (ABV)`
+
+  // Generate dummy flights that feel personalized for the route
   const flights = [
     {
       id: 1,
-      airline: "Air Peace",
-      departure: "07:00",
-      arrival: "08:15",
-      duration: "1h 15m",
-      baseFare: 45000,
-      taxes: 8500,
+      airline: 'Air Peace',
+      departure: '07:00',
+      arrival: '08:15',
+      duration: '1h 15m',
+      baseFare: 65000 + (from.length + to.length) * 200,
+      taxes: 10500,
       baggage: 15000,
-      total: 68500,
+      total: 0, // will calculate below
       stops: 0,
     },
     {
       id: 2,
-      airline: "Green Africa",
-      departure: "12:30",
-      arrival: "13:45",
-      duration: "1h 15m",
-      baseFare: 38000,
-      taxes: 7200,
+      airline: 'Green Africa',
+      departure: '12:30',
+      arrival: '13:45',
+      duration: '1h 15m',
+      baseFare: 52000 + (from.length * 150),
+      taxes: 8800,
       baggage: 12000,
-      total: 57200,
+      total: 0,
       stops: 0,
     },
     {
       id: 3,
-      airline: "Ibom Air",
-      departure: "18:00",
-      arrival: "19:10",
-      duration: "1h 10m",
-      baseFare: 52000,
-      taxes: 9000,
+      airline: 'Ibom Air',
+      departure: '18:00',
+      arrival: '19:10',
+      duration: '1h 10m',
+      baseFare: 78000 + (to.length * 180),
+      taxes: 12500,
       baggage: 15000,
-      total: 76000,
+      total: 0,
       stops: 0,
     },
   ]
 
+  // Calculate totals for each flight
+  const flightsWithTotal = flights.map((flight) => ({
+    ...flight,
+    total: flight.baseFare + flight.taxes + flight.baggage,
+  }))
+
   return (
     <section className="px-4 mt-6 max-w-md mx-auto">
-      <h2 className="text-lg font-bold text-gray-800 mb-4">
-        Lagos (LOS) → Abuja (ABV)
-      </h2>
+      <h2 className="text-lg font-bold text-gray-800 mb-4">{route}</h2>
 
-      {flights.map((flight) => (
+      {flightsWithTotal.map((flight) => (
         <div key={flight.id} className="bg-white rounded-xl shadow-md p-4 mb-4 border border-gray-100">
           {/* Airline & Time */}
           <div className="flex justify-between items-center mb-3">
