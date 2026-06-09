@@ -1,8 +1,10 @@
+import PassengerRights from './PassengerRights'
+import SeatBadge from './SeatBadge'
 export default function FlightResults({ searchData }) {
   // Build dynamic route string, fall back to defaults if not provided
   const from = searchData?.from || 'Lagos'
   const to = searchData?.to || 'Abuja'
-  const route = `${from} (LOS) → ${to} (ABJ)`
+  const route = `${from}  → ${to} `
 
   // Generate dummy flights that feel personalized for the route
   const flights = [
@@ -59,7 +61,10 @@ export default function FlightResults({ searchData }) {
           {/* Airline & Time */}
           <div className="flex justify-between items-center mb-3">
             <div>
+              <div className="flex items-center gap-2">
               <p className="font-semibold text-gray-800">{flight.airline}</p>
+              <SeatBadge airline={flight.airline} />
+              </div> 
               <p className="text-sm text-gray-500">
                 {flight.departure} — {flight.arrival} · {flight.duration}
               </p>
@@ -104,6 +109,8 @@ export default function FlightResults({ searchData }) {
           </button>
         </div>
       ))}
+       {/* Passenger Rights Guide */}
+      <PassengerRights />
     </section>
   )
 }
