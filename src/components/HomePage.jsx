@@ -8,9 +8,15 @@ import FlightResults from './FlightResults'
 
 export default function HomePage() {
   const [searchData, setSearchData] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const handleSearch = (data) => {
-    setSearchData(data)
+    setLoading(true)
+    // Simulate network delay — later this will be a real API call
+    setTimeout(() => {
+      setSearchData(data)
+      setLoading(false)
+    }, 1500)
     console.log('Searching flights:', data)
   }
 
@@ -19,8 +25,19 @@ export default function HomePage() {
       <Header />
       <Hero />
       <SearchWidget onSearch={handleSearch} />
-      {searchData && <FlightResults searchData={searchData} />}
-      {!searchData && (
+
+      {/* LOADING STATE: Show plane animation while "fetching" */}
+      {loading && (
+        <div className="flex justify-center items-center py-20">
+          <div className="animate-flyAcross text-5xl">✈️</div>
+        </div>
+      )}
+
+      {/* RESULTS STATE: Show flight results after search */}
+      {!loading && searchData && <FlightResults searchData={searchData} />}
+
+      {/* INITIAL STATE: Show trust badges before any search */}
+      {!loading && !searchData && (
         <>
           <TrustBadge />
           <FeatureRow />

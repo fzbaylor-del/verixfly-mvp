@@ -1,5 +1,7 @@
 import PassengerRights from './PassengerRights'
 import SeatBadge from './SeatBadge'
+import FlyerGuide from './FlyerGuide'
+import LuggageGuide from './LuggageGuide'
 export default function FlightResults({ searchData }) {
   // Build dynamic route string, fall back to defaults if not provided
   const from = searchData?.from || 'Lagos'
@@ -111,6 +113,8 @@ export default function FlightResults({ searchData }) {
       ))}
        {/* Passenger Rights Guide */}
       <PassengerRights />
+      <FlyerGuide from={from} to={to} />
+      <LuggageGuide from={from} to={to} />
     </section>
   )
 }

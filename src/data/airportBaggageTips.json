@@ -1,0 +1,10 @@
+{
+    "LOS": {
+        "claimArea": "Baggage Claim is on the ground floor, carousels A-D. Most domestic bags arrive within 20 minutes.",
+        "lostAndFound": "Go to the airline's desk near carousel A. If unattended call +234 1 234 567898."
+    },
+    "ABJ": {
+        "claimArea": "Domestic arrivals use carousels 1-3 in the new terminal. Bags usually take 15 minutes.",
+        "lostAndFound": "Report to the airline office opposite carousel 2."
+    }
+}
